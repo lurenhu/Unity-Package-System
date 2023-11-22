@@ -18,4 +18,7 @@
 ![](/Image_Markdown/组件信息3.png)
 
 ### 存储框架设计
+存储框架中包含静态数据与动态数据的存储，对于静态数据我们采用**ScriptableObject**类进行存储与设置，对于动态数据我们采用**PlayerPrefs**类将数据存储至本地磁盘。并设计GM指令来对数据的取读进行测试。
 
+- 静态数据可直接在Inspector界面进行设置，读取可通过Resources.Load<T>()方法进行读取。
+- 动态数据则需要在代码中进行设置，读取可通过PlayerPrefs.GetString()方法进行读取。
