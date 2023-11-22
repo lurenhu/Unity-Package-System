@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4cd04b57f1bfb84cba31256caa7e5b2, type: 3}
+  m_Name: PackageTable_
+  m_EditorClassIdentifier: 
+  dataList:
+  - id: 0
+    type: 0
+    star: 0
+    name: 
+    description: 
+    skillDescription: 
+    imagePath: 
+    num: 0
+  - id: 1
+    type: 1
+    star: 1
+    name: "\u6781\u5BD2\u98CE\u66B4"
+    description: "\u4E0E\u5317\u6781\u661F\u795E\u9668\u843D\u4EBA\u95F4"
+    skillDescription: "\u5173\u4E8E\u6781\u5BD2\u98CE\u66B4\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_01"
+    num: 1
+  - id: 2
+    type: 1
+    star: 2
+    name: "\u4E08\u516B\u86C7\u77DB"
+    description: "\u4E09\u56FD\u65F6\u671F\u5F20\u98DE\u7684\u7231\u5200"
+    skillDescription: "\u5173\u4E8E\u4E08\u516B\u86C7\u77DB\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_02"
+    num: 1
+  - id: 3
+    type: 1
+    star: 2
+    name: "\u96CC\u96C4\u53CC\u80A1\u5251"
+    description: "\u4E09\u56FD\u65F6\u671F\u5218\u5907\u7684\u7231\u5200"
+    skillDescription: "\u5173\u4E8E\u96CC\u96C4\u53CC\u80A1\u5251\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_03"
+    num: 1
+  - id: 4
+    type: 1
+    star: 2
+    name: "\u4E5D\u5934\u86C7\u4E4B\u6756"
+    description: "\u7B2C\u4E8C\u6B21\u4E16\u754C\u5927\u6218\u65F6\u671F\u9634\u9669\u7684\u79D1\u5B66\u5BB6\u6240\u521B"
+    skillDescription: "\u5173\u4E8E\u4E5D\u5934\u86C7\u4E4B\u6756\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_04"
+    num: 1
+  - id: 5
+    type: 1
+    star: 2
+    name: "\u592A\u9633\u6CD5\u6756"
+    description: "\u7531\u592A\u9633\u9ED1\u6591\u7206\u53D1\u51DD\u805A\u800C\u6210"
+    skillDescription: "\u5173\u4E8E\u592A\u9633\u6CD5\u6756\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_05"
+    num: 1
+  - id: 6
+    type: 1
+    star: 2
+    name: "\u6D77\u6D0B\u4E09\u53C9\u621F"
+    description: "\u72EC\u5C5E\u4E8E\u6D77\u5E95\u4E09\u4E07\u91CC\u7684\u795E\u5668"
+    skillDescription: "\u5173\u4E8E\u6D77\u6D0B\u4E09\u53C9\u621F\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_06"
+    num: 1
+  - id: 7
+    type: 1
+    star: 2
+    name: "\u65E5\u8F6E\u5200"
+    description: "\u795E\u8C15\u65F6\u671F\u4EBA\u6C11\u7684\u4FE1\u4EF0\u51DD\u7ED3\u800C\u6210"
+    skillDescription: "\u5173\u4E8E\u65E5\u8F6E\u5200\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_07"
+    num: 1
+  - id: 8
+    type: 1
+    star: 2
+    name: "\u51B2\u950B\u6B65\u67AA"
+    description: "\u73B0\u4EE3\u5BA2\u5236\u5316\u6B66\u5668"
+    skillDescription: "\u5173\u4E8E\u51B2\u950B\u6B65\u67AA\u7684\u6280\u80FD\u63CF\u8FF0"
+    imagePath: "Image/UI/Weapon/\u6B66\u5668_08"
+    num: 1
