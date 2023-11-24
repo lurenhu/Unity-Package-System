@@ -22,7 +22,7 @@ public class GMCmd
     {
         //保存数据
         PackageLocalData.Instance.items = new List<PackageLocalItem>();
-        for (int i = 0; i < 9; i++)
+        for (int i = 1; i < 9; i++)
         {
             PackageLocalItem packageLocalItem = new()
             {
@@ -30,7 +30,7 @@ public class GMCmd
                 id = i,
                 num = i,
                 level = i,
-                isNew = i/2 == 1
+                isNew = i%2 == 1
             };
             PackageLocalData.Instance.items.Add(packageLocalItem);
         }

@@ -24,10 +24,16 @@ public class PackagePanel : BasePanal
     private Transform UIDeleteBtn;
     private Transform UIDetailBtn;
 
+    public GameObject PackageUIItemPrefab;
+
     override protected void Awake()
     {
         base.Awake();
         InitUI();
+    }
+
+    private void Start() {
+        RefreshUI();
     }
 
     private void InitUI()
@@ -36,8 +42,32 @@ public class PackagePanel : BasePanal
         InitClick();
     }
 
-    private void InitUIName()
+    private void RefreshUI()
     {
+        RefreshScrollView();
+    }
+
+    private void RefreshScrollView()
+    {
+        //清理原本容器中的物体
+        RectTransform scrollContent = UIScrollView.GetComponent<ScrollRect>().content;
+        for (int i = 0; i < scrollContent.childCount; i++)
+        {
+            Destroy(scrollContent.GetChild(i).gameObject);
+        }
+        //重新实例化本地数据中的物品数据
+        foreach(PackageLocalItem localData in GameManager.Instance.GetSortPackageLocalData())
+        {
+            Transform PackageUIItem = Instantiate(PackageUIItemPrefab.transform, scrollContent) as Transform;
+            PackageCell packageCell = PackageUIItem.GetComponent<PackageCell>();
+            packageCell.Refresh(localData,this);
+        }
+
+    }
+
+    
+    private void InitUIName()
+    {   //绑定所有UI的对象——通过在Inspector中的相对路径来绑定
         UIMenu = transform.Find("Top/Menu");
         UIMenuWeapon = transform.Find("Top/Menu/Weapon");
         UIMenuFood = transform.Find("Top/Menu/Food");
@@ -65,7 +95,7 @@ public class PackagePanel : BasePanal
     }
 
     private void InitClick()
-    {
+    {   //为所有Button组件添加点击事件
         UIMenuFood.GetComponent<Button>().onClick.AddListener(OnClickFood);
         UIMenuWeapon.GetComponent<Button>().onClick.AddListener(OnClickWeapon);
         UICloseBtn.GetComponent<Button>().onClick.AddListener(OnClickClose);
@@ -105,7 +135,7 @@ public class PackagePanel : BasePanal
 
     private void OnClickClose()
     {
-        throw new NotImplementedException();
+        ClosePanal();
     }
 
     private void OnClickFood()
