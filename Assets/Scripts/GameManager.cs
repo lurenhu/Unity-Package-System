@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.OpenPanal(UIConst.PackagePanel);
     }
 
+    /// <summary>
+    /// 获取静态数据
+    /// </summary>
+    /// <returns></returns>
     public PackageTable GetPackageTable()
     {
         if (packageTable == null)
@@ -34,11 +38,20 @@ public class GameManager : MonoBehaviour
         return packageTable;
     }
 
+    /// <summary>
+    /// 获取动态数据
+    /// </summary>
+    /// <returns></returns>
     public List<PackageLocalItem> GetPackageLocalData()
     {
         return PackageLocalData.Instance.LoadPackage();
     }
 
+    /// <summary>
+    /// 通过id获取对应静态数据
+    /// </summary>
+    /// <param name="id">物品id</param>
+    /// <returns>内存中对应的静态项</returns>
     public PackageTableItem GetPackageItemById(int id)
     {
         List<PackageTableItem> packageDataList = GetPackageTable().dataList;
@@ -52,6 +65,11 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// 通过uid获取对应动态数据
+    /// </summary>
+    /// <param name="uid">物品的uid</param>
+    /// <returns>本地动态数据中对应的项</returns>
     public PackageLocalItem GetPackagerLocalDataByUid(string uid)
     {
         List<PackageLocalItem> packageDataList = GetPackageLocalData();

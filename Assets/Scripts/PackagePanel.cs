@@ -26,6 +26,19 @@ public class PackagePanel : BasePanal
 
     public GameObject PackageUIItemPrefab;
 
+    private string _chooseUid;
+    public string ChooseUid
+    {
+        get
+        {
+            return _chooseUid;
+        }
+        set
+        {
+            _chooseUid = value;
+            RefreshDetail();
+        }
+    }
     override protected void Awake()
     {
         base.Awake();
@@ -40,6 +53,14 @@ public class PackagePanel : BasePanal
     {
         InitUIName();
         InitClick();
+    }
+
+    private void RefreshDetail()
+    {
+        //找到uid对应的动态数据
+        PackageLocalItem localItem = GameManager.Instance.GetPackagerLocalDataByUid(ChooseUid);
+        //刷新详情界面
+        UIDetailPanel.GetComponent<PackageDetail>().Refresh(localItem,this);
     }
 
     private void RefreshUI()
