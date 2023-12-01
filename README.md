@@ -49,6 +49,22 @@ PackageTable packageTable = Resources.Load<PackageTable>("TableData/PackageTable
 
 3. 创建一个**GameManager**类和**GameManager**对象，在 **GameManager**类中封装获取静态数据和获取动态数据的方法，以及通过物品ID获取对应静态数据，通过物品UID获取对应动态数据，并对背包界面中的物品显示顺序设定规则。
 
+### 物品交互和物品详情
 
+#### 物品详情实现流程
+1. 在**PackageCell**中添加三个接口**IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler**，分别对应鼠标点击，鼠标进入和鼠标退出的事件。
+
+2. 创建**PackageDetail**类来绑定在详情界面的相关组件，并提供一个通过获取动态数据来刷新物品详情界面的方法。
+
+3. 在**PackagePanel**类中添加一个**ChooseUid**对象并绑定刷新详情界面的方法，在**ChooseUid**对象被赋值时调用该方法。
+
+4. 在**PackageCell**类便可通过给**PackagePanel**中的**ChooseUid**赋值来实现物品详情界面的刷新。
+
+#### 物品交互实现流程
+1. 在交互中可利用**Animator**组件来为**PackageCell**创建交互动画
+> 此处的PackageCell是创建的物品预制体
+
+2. 再通过**PackageCell**中对应的鼠标事件方法来分配对应的动画状态机，实现背包系统的交互。
+> 这里在预制体中需要将所有的子物体中的**Image**组件的**RaycastTarget**选项取消勾选，这样可以防止子物体影响点触事件。
 
 
