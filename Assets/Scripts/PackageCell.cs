@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -66,6 +67,18 @@ public class PackageCell : MonoBehaviour,IPointerClickHandler,IPointerEnterHandl
 
     }
 
+    public void RefreshDeleteState()
+    {
+        if (this.uiParent.deleteChooseUid.Contains(this.packageLocalItem.uid))
+        {
+            this.UIDeleteSelect.gameObject.SetActive(true);
+        }
+        else
+        {
+            this.UIDeleteSelect.gameObject.SetActive(false);
+        }
+    }
+
     private void RefreshStars()
     {
         for (int i = 0; i < UIStars.childCount; i++)
@@ -85,6 +98,10 @@ public class PackageCell : MonoBehaviour,IPointerClickHandler,IPointerEnterHandl
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("OnPinterClick" + eventData.ToString());
+        if (this.uiParent.curMode == PackageMode.delete)
+        {
+            this.uiParent.AddChooseDeleteUid(this.packageLocalItem.uid);
+        }
         if (this.packageLocalItem.uid == this.uiParent.ChooseUid)
         {
             return;

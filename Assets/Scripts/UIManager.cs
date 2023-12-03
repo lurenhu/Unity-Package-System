@@ -54,6 +54,8 @@ public class UIManager
         pathDict = new Dictionary<string, string>()
         {
             {UIConst.PackagePanel,"Package/PackagePanal"},
+            {UIConst.LotteryPanel,"Lottery/LotteryPanel"},
+            {UIConst.MainPanel,"Main/MainPanel"},
         };
     }
 
@@ -120,4 +122,6 @@ public class UIManager
 public class UIConst
 {
     public const string PackagePanel = "PackagePanel";
+    public const string LotteryPanel = "LotteryPanel";
+    public const string MainPanel = "MainPanel";
 }

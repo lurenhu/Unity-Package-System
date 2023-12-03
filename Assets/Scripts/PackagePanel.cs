@@ -1,8 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum PackageMode
+{
+    normal,
+    delete,
+    sort
+}
 
 public class PackagePanel : BasePanal
 {
@@ -26,6 +35,10 @@ public class PackagePanel : BasePanal
 
     public GameObject PackageUIItemPrefab;
 
+    public List<string> deleteChooseUid;
+
+    public PackageMode curMode = PackageMode.normal; 
+
     private string _chooseUid;
     public string ChooseUid
     {
@@ -37,6 +50,29 @@ public class PackagePanel : BasePanal
         {
             _chooseUid = value;
             RefreshDetail();
+        }
+    }
+
+    public void AddChooseDeleteUid(string uid)
+    {
+        this.deleteChooseUid??= new List<string>();
+        if (!this.deleteChooseUid.Contains(uid))
+        {
+            this.deleteChooseUid.Add(uid);
+        }else
+        {
+            this.deleteChooseUid.Remove(uid);
+        }
+        RefreshDeletePanel();
+    }
+
+    public void RefreshDeletePanel()
+    {
+        RectTransform scrollContent = UIScrollView.GetComponent<ScrollRect>().content;
+        foreach(Transform cell in scrollContent)
+        {
+            PackageCell packageCell = cell.GetComponent<PackageCell>();
+            packageCell.RefreshDeleteState();
         }
     }
     override protected void Awake()
@@ -136,12 +172,23 @@ public class PackagePanel : BasePanal
 
     private void OnClickDelete()
     {
-        throw new NotImplementedException();
+        curMode = PackageMode.delete;
+        UIDeletePanel.gameObject.SetActive(true);
+
     }
 
     private void OnClickDeleteConfirm()
     {
-        throw new NotImplementedException();
+        if (this.deleteChooseUid == null)
+        {
+            return;
+        }
+        if (this.deleteChooseUid.Count == 0)
+        {
+            return;
+        }
+        GameManager.Instance.DeletePackageItems(deleteChooseUid);
+        RefreshUI();
     }
 
     private void OnClickRight()
@@ -157,6 +204,7 @@ public class PackagePanel : BasePanal
     private void OnClickClose()
     {
         ClosePanal();
+        UIManager.Instance.OpenPanal(UIConst.MainPanel);
     }
 
     private void OnClickFood()
@@ -171,6 +219,9 @@ public class PackagePanel : BasePanal
 
     private void OnClickDeleteBack()
     {
-        throw new NotImplementedException();
+        curMode = PackageMode.normal;
+        UIDeletePanel.gameObject.SetActive(false);
+        deleteChooseUid = new List<string>();
+        RefreshDeletePanel();
     }
 }
