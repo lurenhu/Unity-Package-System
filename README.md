@@ -56,15 +56,32 @@ PackageTable packageTable = Resources.Load<PackageTable>("TableData/PackageTable
 
 2. 创建**PackageDetail**类来绑定在详情界面的相关组件，并提供一个通过获取动态数据来刷新物品详情界面的方法。
 
-3. 在**PackagePanel**类中添加一个**ChooseUid**对象并绑定刷新详情界面的方法，在**ChooseUid**对象被赋值时调用该方法。
+3. 在**PackagePanel**类中添加一个`ChooseUid`对象并绑定刷新详情界面的方法，在`ChooseUid`对象被赋值时调用该方法。
 
-4. 在**PackageCell**类便可通过给**PackagePanel**中的**ChooseUid**赋值来实现物品详情界面的刷新。
+4. 在**PackageCell**类便可通过给**PackagePanel**中的`ChooseUid`赋值来实现物品详情界面的刷新。
 
 #### 物品交互实现流程
-1. 在交互中可利用**Animator**组件来为**PackageCell**创建交互动画
+1. 在交互中可利用`Animator`组件来为**PackageCell**创建交互动画
 > 此处的PackageCell是创建的物品预制体
 
 2. 再通过**PackageCell**中对应的鼠标事件方法来分配对应的动画状态机，实现背包系统的交互。
-> 这里在预制体中需要将所有的子物体中的**Image**组件的**RaycastTarget**选项取消勾选，这样可以防止子物体影响点触事件。
+> 这里在预制体中需要将所有的子物体中的`Image`组件的`RaycastTarget`选项取消勾选，这样可以防止子物体影响点触事件。
+
+### 抽卡和删除物品
+
+#### 抽卡实现流程
+1. 在**GameManager**中实现随机获取静态数据及抽卡所得物品的数据。并将接口交给**LotteryPanel**中的按钮事件。
+
+2. 创建**LotteryCell**类，用来绑定抽卡界面中每个物品单元，同时提供一个通过静态数据刷新该物品显示的接口，也同样交给**LotteryPanel**中的按钮事件。
+
+3. 在**LotteryPanel**中的按钮事件中处理所得接口，并实例化**LotteryCell**对象
+
+#### 删除物品实现流程
+1. 在**GameObject**中实现对指定`uid`的物品进行删除，将该接口交给**PackagePanel**中的按钮事件。
+
+2. 在**PackagePanel**中的按钮事件中处理该接口，以及在Delete模式下同时实现所选需要删除物品的动画。
+
+3. 在**PackageCell**中通过**PackagePanel**中的接口来对指定`uid`的物品进行删除动画的显示。
+
 
 
